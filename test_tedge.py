@@ -20,7 +20,7 @@ def test_use_case_help(process_factory):
     help.run()
     assert help.get_stdout() == "tedge 0.5.1"
 
-def test_use_case_help(process_factory):
+def test_use_connect(process_factory):
 
     con = process_factory(["sudo", "tedge", "connect", "c8y"])
     con.run()
@@ -38,4 +38,29 @@ def test_use_case_help(process_factory):
     assert discon.returncode == 0
 
 
+
+def test_use_case_connect_and_observe(process_factory):
+
+
+    mos = process_factory(["/usr/bin/mosquitto_sub", "-v", "-t", "#"], name="mos")
+    mos.run_bg()
+
+    con = process_factory(["sudo", "tedge", "connect", "c8y"], name="con")
+    con.run()
+
+    print( con.get_stdout() )
+    print( con.get_stderr( ))
+    assert con.returncode == 0
+
+    discon = process_factory(["sudo", "tedge", "disconnect", "c8y"], name="discon")
+    discon.run()
+
+    print( discon.get_stderr() )
+    print( discon.get_stdout() )
+
+    assert discon.returncode == 0
+
+    mos.kill()
+    print(mos.get_stdout())
+    print(mos.get_stderr())
 
