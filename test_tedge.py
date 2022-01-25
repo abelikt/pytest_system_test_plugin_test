@@ -18,7 +18,7 @@ def test_use_case_help(process_factory):
 
     help = process_factory(["tedge", "-V"])
     help.run()
-    assert help.get_stdout() == "tedge 0.5.1"
+    assert help.get_stdout() == "tedge 0.5.2"
 
 def test_use_connect(process_factory):
 
@@ -63,4 +63,6 @@ def test_use_case_connect_and_observe(process_factory):
     mos.kill()
     print(mos.get_stdout())
     print(mos.get_stderr())
+    assert "tedge/commands/req/software/list" in mos.get_stdout()
+
 
