@@ -1,8 +1,12 @@
-# To run the test
-#     pytest -s test_apt.py
-#
-# Make sure the package rolldice is not installed
-#     sudo apt remove -y rolldice
+"""
+Experimental tests that use apt
+
+ To run the test
+     pytest -s test_apt.py
+
+ Make sure the package rolldice is not installed
+     sudo apt remove -y rolldice
+"""
 
 import re
 import pytest

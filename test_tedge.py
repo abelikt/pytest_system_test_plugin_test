@@ -1,4 +1,8 @@
-# pip install ../pytest_system_test_plugin
+"""
+Experimental tests that play with thin-edge.io.
+See https://thin-edge.io
+
+"""
 
 import logging
 import os
@@ -66,4 +70,4 @@ def test_use_case_connect_and_observe(process_factory):
 
 
 # TODO tedge connect in the background ?
-# TODO inverser gherkin here?
+# TODO inverse gherkin here?
